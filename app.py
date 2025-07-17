@@ -169,6 +169,7 @@ elif page == "Clean My Data":
                     numeric_strategy=numeric_map[numeric_strategy],
                     non_numeric_strategy=non_numeric_map[non_numeric_strategy]
                 )
+                st.write(f"##DEBUG10: ✅ Cleaned {len(cleaned_df)} rows.")
                 st.session_state.cleaned_df = cleaned_df
                 row_count = len(cleaned_df)
                 cost, rows, rows_minus_free = calculate_price(row_count)
