@@ -179,29 +179,29 @@ elif page == "Clean My Data":
             st.warning(" ⚠️ No raw data available to clean. Please upload a file.")
 
         # --- Show cleaned data ---
-    cleaned_df = st.session_state.get("cleaned_df", None)
-    st.write(f"##DEBUG: ✅ Cleaned {len(cleaned_df)} rows.")
-    if cleaned_df is not None and not cleaned_df.empty:
-        st.write(f"##DEBUG1: in first if")
-        st.write("### ✅ Cleaned Data Preview")
-        st.dataframe(cleaned_df.head())
+        cleaned_df = st.session_state.get("cleaned_df", None)
+        st.write(f"##DEBUG: ✅ Cleaned {len(cleaned_df)} rows.")
+        if cleaned_df is not None and not cleaned_df.empty:
+            st.write(f"##DEBUG1: in first if")
+            st.write("### ✅ Cleaned Data Preview")
+            st.dataframe(cleaned_df.head())
 
-        if st.checkbox("Show cleaning log"):
-            st.write(f"##DEBUG2: in second if")
-            st.write("### 📋 Cleaning Log")
-            log_lines = write_log(st.session_state.raw_df, cleaned_df)
-            if log_lines:
-		st.write(f"##DEBUG3: in third if")
-                for line in log_lines:
-                    st.markdown(f"- {line}")
-            else:
-                st.info("No cleaning actions were logged.")
+            if st.checkbox("Show cleaning log"):
+                st.write(f"##DEBUG2: in second if")
+                st.write("### 📋 Cleaning Log")
+                log_lines = write_log(st.session_state.raw_df, cleaned_df)
+                if log_lines:
+		    st.write(f"##DEBUG3: in third if")
+                    for line in log_lines:
+                        st.markdown(f"- {line}")
+                else:
+                    st.info("No cleaning actions were logged.")
 
-        st.download_button(
-            "📥 Download Cleaned CSV",
-            data=cleaned_df.to_csv(index=False),
-            file_name="cleaned_data.csv"
-        )
+            st.download_button(
+                "📥 Download Cleaned CSV",
+                data=cleaned_df.to_csv(index=False),
+                file_name="cleaned_data.csv"
+            )
 
 
     # --- Footer ---
