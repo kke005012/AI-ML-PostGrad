@@ -299,22 +299,15 @@ elif page == "Clean My Data":
                 )
                 st.success("📧 Receipt sent to your email.") if success else st.warning(f"⚠️ {message}")
 
-from google_sheets import append_log_to_sheet
-from datetime import datetime
 
-# Test log entry
-log_entry = {
-    "timestamp": datetime.now().isoformat(),
-    "email": "test@datacleanpro.com",
-    "filename": "test.csv",
-    "row_count": 123,
-    "charged": 0.00
-}
-
-append_log_to_sheet(log_entry)
-st.success("✅ Test log sent to Google Sheets!")
-
-
+                # ✅ Test log entry
+                log_entry = {
+                    "timestamp": datetime.now().isoformat(),
+                    "email": "test@datacleanpro.com",
+                    "filename": "test.csv",
+                    "row_count": 123,
+                    "charged": 0.00
+                }
 
                 # ... after sending receipt ...
                 log_entry = {
