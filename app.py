@@ -285,7 +285,7 @@ elif page == "Clean My Data":
                 success, message = send_receipt(
                     to_email=st.session_state["user_email"],
                     filename=uploaded_file.name,
-                    amount=total_cost,
+                    amount=cost,
                     cleaning_strategies=[
                         f"Numeric Strategy: {numeric_strategy}",
                         f"Non-Numeric Strategy: {non_numeric_strategy}",
