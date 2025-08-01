@@ -300,22 +300,13 @@ elif page == "Clean My Data":
                 st.success("📧 Receipt sent to your email.") if success else st.warning(f"⚠️ {message}")
 
 
-                # ✅ Test log entry
-                log_entry = {
-                    "timestamp": datetime.now().isoformat(),
-                    "email": "test@datacleanpro.com",
-                    "filename": "test.csv",
-                    "row_count": 123,
-                    "charged": 0.00
-                }
-
                 # ... after sending receipt ...
                 log_entry = {
                     "timestamp": datetime.now().isoformat(),
                     "email": st.session_state.get("user_email", "unknown"),
                     "filename": uploaded_file.name,
                     "row_count": len(cleaned_df),
-                    "charged": total_cost,
+                    "charged": cost,
                 }
 
                 # Your actual sheet ID from the URL
